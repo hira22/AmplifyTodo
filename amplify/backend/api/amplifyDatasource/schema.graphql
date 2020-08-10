@@ -1,4 +1,10 @@
-type Todo @model {
-    id: ID!
-    body: String!
+type Task @model {
+  id: ID!
+  title: String!
+  description: String
+  status: String
+}
+type Note @model {
+  id: ID!
+  content: String!
 }

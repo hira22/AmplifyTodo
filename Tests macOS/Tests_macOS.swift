@@ -1,14 +1,14 @@
 //
-//  AmplifyTodoUITests.swift
-//  AmplifyTodoUITests
+//  Tests_macOS.swift
+//  Tests macOS
 //
-//  Created by hiraoka on 2020/08/10.
+//  Created by Masayuki Hiraoka on 2020/08/10.
 //  Copyright © 2020 hiraoka. All rights reserved.
 //
 
 import XCTest
 
-class AmplifyTodoUITests: XCTestCase {
+class Tests_macOS: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -35,7 +35,7 @@ class AmplifyTodoUITests: XCTestCase {
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
             // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
+            measure(metrics: [XCTApplicationLaunchMetric()]) {
                 XCUIApplication().launch()
             }
         }
