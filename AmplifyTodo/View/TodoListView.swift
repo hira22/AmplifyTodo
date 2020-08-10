@@ -12,6 +12,8 @@ struct TodoListView: View {
     
     @State var todos = Array(0..<100).map { _ in UUID().uuidString }
     
+    @State var showNew: Bool = false
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -23,7 +25,7 @@ struct TodoListView: View {
                 
                 VStack {
                     Spacer()
-                    Button(action: {}) {
+                    Button(action: { showNew.toggle() }) {
                         Image(systemName: "plus")
                             .padding()
                             .foregroundColor(.white)
@@ -34,6 +36,9 @@ struct TodoListView: View {
                 }
             }
             .navigationBarTitle("Todos")
+            .sheet(isPresented: $showNew, content: {
+                NewTodoView()
+            })
         }
     }
     

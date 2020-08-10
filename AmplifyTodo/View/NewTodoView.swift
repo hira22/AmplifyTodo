@@ -9,8 +9,34 @@
 import SwiftUI
 
 struct NewTodoView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State var text: String = ""
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack {
+            Text("Enter a new Todo")
+                .font(.largeTitle)
+            
+            TextEditor(text: $text)
+                .padding(.horizontal)
+            
+            Button(action: saveTodo,
+                   label: {
+                    Text("Save")
+                        .font(.title)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(4)
+                })
+            
+            Spacer().frame(height: 30)
+        }
+    }
+    
+    func saveTodo() {
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
