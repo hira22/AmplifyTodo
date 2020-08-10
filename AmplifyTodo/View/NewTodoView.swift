@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  NewTodoView.swift
 //  AmplifyTodo
 //
 //  Created by hiraoka on 2020/08/10.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct NewTodoView: View {
     var body: some View {
         Text("Hello, World!")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct NewTodoView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NewTodoView()
     }
 }
