@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Amplify
 
 struct NewTodoView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -21,21 +22,27 @@ struct NewTodoView: View {
             TextEditor(text: $text)
                 .padding(.horizontal)
             
-            Button(action: saveTodo,
-                   label: {
-                    Text("Save")
-                        .font(.title)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(4)
-                })
+            Button(action: saveTodo) {
+                Text("Save")
+                    .font(.title)
+                    .frame(width: 100, height: 45, alignment: .center)
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(8)
+            }
             
             Spacer().frame(height: 30)
         }
     }
     
     func saveTodo() {
+        let task = Task(title: text, completed: false)
+        
+        Amplify.DataStore.save(task) { (relust: Result<Task, DataStoreError>) in
+           if case .failure(let error) = relust {
+               print(error)
+           }
+       }
         presentationMode.wrappedValue.dismiss()
     }
 }
